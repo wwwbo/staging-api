@@ -16,11 +16,12 @@ class AuthService
         ]);
 
         $token = $user->createToken($data['name'])->plainTextToken;
-
-        return response()->json([
-            'data' => $user,
+        $data = [
+            'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer'
-        ]);
+        ];
+
+        return responseSuccess($data, 'User created', 201);
     }
 }
