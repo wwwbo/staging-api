@@ -11,20 +11,24 @@ class AuthService
 {
     public function register(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
+        try {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password'])
+            ]);
 
-        $token = $user->createToken($data['name'])->plainTextToken;
-        $data = [
-            'user' => $user,
-            'access_token' => $token,
-            'token_type' => 'Bearer'
-        ];
+            $token = $user->createToken($data['name'])->plainTextToken;
+            $data = [
+                'user' => $user,
+                'access_token' => $token,
+                'token_type' => 'Bearer'
+            ];
 
-        return responseSuccess($data, 'User created', 201);
+            return responseSuccess($data, 'User created', 201);
+        } catch (Exception $e) {
+            return responseError('Failed create user', $e->getMessage(), 500);
+        }
     }
 
     public function login($request)
