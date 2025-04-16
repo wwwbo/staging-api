@@ -29,7 +29,7 @@
                     <td>{{ $data->gender }}</td>
                     <td class="text-center">
                         <a href="{{ route('dashboard.show', $data->id) }}" class="btn btn-outline-primary">View</a>
-                        <button type="button" class="btn btn-outline-success">Edit</button>
+                        <a href="{{ route('dashboard.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                         <button type="button" class="btn btn-outline-danger">Delete</button>
                     </td>
                 </tr>
@@ -44,6 +44,28 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        //message with sweetalert
+        @if(session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "BERHASIL",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+        @elseif(session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "GAGAL!",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+        @endif
+    </script>
+
 </body>
 
 </html>
