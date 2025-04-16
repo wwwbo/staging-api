@@ -35,4 +35,11 @@ class StudentController extends Controller
 
         return redirect()->route('dashboard.index')->with([$students['status'] => $students['message']]);
     }
+
+    public function show(string $id): View
+    {
+        $student = $this->studentService->show($id);
+
+        return view('dashboard.view', compact('student'));
+    }
 }

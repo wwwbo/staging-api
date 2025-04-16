@@ -38,4 +38,9 @@ class StudentService
             'message' => $student ? 'Success create data' : 'Failed create data'
         ];
     }
+
+    public function show(string $userId)
+    {
+        return Student::findOrFail($userId);
+    }
 }
