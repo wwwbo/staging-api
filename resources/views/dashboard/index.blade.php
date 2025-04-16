@@ -10,6 +10,7 @@
 
 <body>
     <div class="container">
+        <br>
         <a href="{{ route('dashboard.create') }}" class="btn btn-md btn-success mb-3">Add Student</a>
         <table class="table">
             <thead>
