@@ -11,6 +11,8 @@
 <body>
     <div class="container">
         <br>
+        <a href="{{ route('dashboard.index') }}" class="btn btn-md btn-primary mb-3">Back</a>
+        <br>
         <h3>Add New Student Data</h3>
         <br>
         <form action="{{ route('dashboard.store') }}" method="POST" enctype="multipart/form-data">
@@ -33,7 +35,7 @@
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="fulan@mail.com">
+                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="inputEmail3" placeholder="fulan@mail.com">
                 </div>
             </div>
 
@@ -131,7 +133,6 @@
             </fieldset>
 
             <button type="submit" class="btn btn-primary">Create</button>
-            <a href="{{ route('dashboard.index') }}" class="btn btn-outline-danger">Cancel</a>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
