@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\StoreStudentRequest;
 use App\Services\Student\StudentService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class StudentController extends Controller
@@ -20,5 +22,17 @@ class StudentController extends Controller
     {
         $students = $this->studentService->index();
         return view('dashboard.index', compact('students'));
+    }
+
+    public function create(): View
+    {
+        return view('dashboard.create');
+    }
+
+    public function store(StoreStudentRequest $request): RedirectResponse
+    {
+        $students = $this->studentService->store($request);
+
+        return redirect()->route('dashboard.index')->with([$students['status'] => $students['message']]);
     }
 }
