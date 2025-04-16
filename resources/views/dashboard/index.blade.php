@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <br>
-        <a href="{{ route('dashboard.create') }}" class="btn btn-md btn-success mb-3">Add Student</a>
+        <a href="{{ route('dashboard.create') }}" class="btn btn-md btn-primary mb-3">Add Student</a>
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
                     <td>{{ $data->religion }}</td>
                     <td>{{ $data->gender }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-outline-primary">View</button>
+                        <a href="{{ route('dashboard.show', $data->id) }}" class="btn btn-outline-primary">View</a>
                         <button type="button" class="btn btn-outline-success">Edit</button>
                         <button type="button" class="btn btn-outline-danger">Delete</button>
                     </td>
