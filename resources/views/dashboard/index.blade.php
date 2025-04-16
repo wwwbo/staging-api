@@ -28,9 +28,13 @@
                     <td>{{ $data->religion }}</td>
                     <td>{{ $data->gender }}</td>
                     <td class="text-center">
-                        <a href="{{ route('dashboard.show', $data->id) }}" class="btn btn-outline-primary">View</a>
-                        <a href="{{ route('dashboard.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
-                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                        <form id="deleteForm{{ $data->id }}" action="{{ route('dashboard.destroy', $data->id) }}" method="POST">
+                            <a href="{{ route('dashboard.show', $data->id) }}" class="btn btn-outline-primary">View</a>
+                            <a href="{{ route('dashboard.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{ $data->id }})">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @empty
@@ -64,6 +68,23 @@
             timer: 2000
         });
         @endif
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure want to delete?',
+                text: "Data can be recovered!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            });
+        }
     </script>
 
 </body>

@@ -84,4 +84,16 @@ class StudentService
             'message' => $student ? 'Success update data' : 'Failed update data'
         ];
     }
+
+    public function destroy($userId)
+    {
+        $student = Student::findOrFail($userId);
+        Storage::delete('student/' . $student->photo);
+        Student::find($student['id'])->delete();
+
+        return [
+            'status' => $student ? 'success' : 'error',
+            'message' => $student ? 'Success delete data' : 'Failed delete data'
+        ];
+    }
 }

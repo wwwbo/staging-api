@@ -56,4 +56,11 @@ class StudentController extends Controller
 
         return redirect()->route('dashboard.index')->with([$students['status'] => $students['message']]);
     }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $student = $this->studentService->destroy($id);
+
+        return redirect()->route('dashboard.index')->with([$student['status'] => $student['message']]);
+    }
 }
