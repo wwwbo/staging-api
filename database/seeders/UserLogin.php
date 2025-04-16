@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-// use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserLogin extends Seeder
 {
@@ -16,19 +15,19 @@ class UserLogin extends Seeder
     {
         $users = [
             [
-                'name' => 'super admin',
-                'email' => 'super admin@mail.com',
-                'password' => Hash('sha256', 'abc123')
+                'name' => 'superadmin',
+                'email' => 'superadmin@mail.com',
+                'password' => Hash::make('abc123')
             ],
             [
                 'name' => 'admin',
                 'email' => 'admin@mail.com',
-                'password' => Hash('sha256', 'abc123')
+                'password' => Hash::make('abc123')
             ],
             [
                 'name' => 'viewer',
                 'email' => 'viewer@mail.com',
-                'password' => Hash('sha256', 'abc123')
+                'password' => Hash::make('abc123')
             ],
         ];
 
