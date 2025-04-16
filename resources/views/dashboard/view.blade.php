@@ -12,6 +12,7 @@
     <div class="container">
         <br>
         <a href="{{ route('dashboard.index') }}" class="btn btn-md btn-primary mb-3">Back</a>
+        <a href="{{ route('dashboard.edit', $student->id) }}" class="btn btn-md btn-success mb-3">Update</a>
         <br>
         <div class="card mb-3">
             <div class="card-body d-flex flex-row gap-4">
