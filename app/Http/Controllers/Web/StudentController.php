@@ -42,4 +42,18 @@ class StudentController extends Controller
 
         return view('dashboard.view', compact('student'));
     }
+
+    public function edit(string $id): View
+    {
+        $student = $this->studentService->show($id);
+
+        return view('dashboard.edit', compact('student'));
+    }
+
+    public function update(StoreStudentRequest $request, $id): RedirectResponse
+    {
+        $students = $this->studentService->update($request, $id);
+
+        return redirect()->route('dashboard.index')->with([$students['status'] => $students['message']]);
+    }
 }
