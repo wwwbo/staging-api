@@ -19,10 +19,10 @@ class StudentSeeder extends Seeder
                 'religion' => 'Islam',
                 'place_of_birth' => 'Bogor',
                 'date_of_birth' => '2000/2/2',
-                'gender' => 'Laki-Laki',
+                'gender' => 'Male',
                 'address' => 'Desa Ciomas',
                 'phone_number' => '085518192920',
-                'photo' => ''
+                'photo' => 'upload/test.jpg'
             ]
         ];
 

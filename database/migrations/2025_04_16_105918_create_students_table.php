@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('religion');
             $table->string('place_of_birth');
             $table->date('date_of_birth');
-            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->enum('gender', ['Male', 'Female']);
             $table->string('address');
             $table->string('phone_number', 15);
             $table->string('photo')->nullable();

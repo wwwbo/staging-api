@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'religion' => fake()->name(),
             'place_of_birth' => fake()->name(),
             'date_of_birth' => fake()->date('Y-m-d'),
-            'gender' => fake()->randomElement(['Laki-Laki', 'Perempuan']),
+            'gender' => fake()->randomElement(['Male', 'Female']),
             'address' => fake()->name(),
             'phone_number' => fake()->name(),
             'photo' => fake()->name()
