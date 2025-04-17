@@ -19,4 +19,9 @@ class StudentController extends Controller
     {
         return $this->studentApiService->index($request);
     }
+
+    public function show($request)
+    {
+        return $this->studentApiService->show($request);
+    }
 }
