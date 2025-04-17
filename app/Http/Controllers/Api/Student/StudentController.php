@@ -30,4 +30,9 @@ class StudentController extends Controller
     {
         return $this->studentApiService->update($request, $id);
     }
+
+    public function destroy($id)
+    {
+        return $this->studentApiService->destroy($id);
+    }
 }

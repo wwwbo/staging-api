@@ -14,6 +14,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/students', [StudentController::class, 'index']);
         Route::get('/students/{id}', [StudentController::class, 'show']);
         Route::post('/students/{id}', [StudentController::class, 'update']);
+        Route::delete('/students/{id}', [StudentController::class, 'destroy']);
     });
 });
 

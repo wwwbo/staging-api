@@ -80,4 +80,20 @@ class StudentApiService
             return responseError($e->getMessage(), 'Bad Request');
         }
     }
+
+    public function destroy($userId)
+    {
+        try {
+            $student = Student::find($userId);
+
+            if (!$student) throw new Exception('Data not found');
+
+            Storage::delete('student/' . $student->photo);
+            Student::find($student['id'])->delete();
+
+            return responseSuccess($student, 'Success deleted user');
+        } catch (Exception $e) {
+            return responseError('Please contact administrator', $e->getMessage(), 404);
+        }
+    }
 }
