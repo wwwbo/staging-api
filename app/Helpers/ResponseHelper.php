@@ -21,3 +21,19 @@ if (!function_exists('responseError')) {
         ], $status);
     }
 }
+
+if (!function_exists('responsePagination')) {
+    function responsePagination($data)
+    {
+        return response()->json([
+            'status' => 'success',
+            'data' => $data->items(),
+            'meta' => [
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'per_page' => $data->perPage(),
+                'total' => $data->total(),
+            ],
+        ]);
+    }
+}
