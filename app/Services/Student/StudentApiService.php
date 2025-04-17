@@ -4,6 +4,7 @@ namespace App\Services\Student;
 
 use App\Models\Student;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class StudentApiService
 {
@@ -32,6 +33,51 @@ class StudentApiService
             return responseSuccess($student, 'Success fetch user');
         } catch (Exception $e) {
             return responseError('Please contact administrator', $e->getMessage(), 404);
+        }
+    }
+
+    public function update($data, $userId)
+    {
+        try {
+            $student = Student::findOrFail($userId);
+
+            if (!$student) throw new Exception('User not found', 400);
+
+            if ($data->hasFile('photo')) {
+                Storage::delete('student/' . $student->photo);
+
+                $image = $data->file('photo');
+                $image->storeAs('student', $image->hashName());
+
+                $student->update([
+                    'name' => $data->name,
+                    'email' => $data->email,
+                    'religion' => $data->religion,
+                    'place_of_birth' => $data->place_of_birth,
+                    'date_of_birth' => $data->date_of_birth,
+                    'gender' => $data->gender,
+                    'address' => $data->address,
+                    'phone_number' => $data->phone_number,
+                    'photo' => $image->hashName()
+                ]);
+            } else {
+                $student->update([
+                    'name' => $data->name,
+                    'email' => $data->email,
+                    'religion' => $data->religion,
+                    'place_of_birth' => $data->place_of_birth,
+                    'date_of_birth' => $data->date_of_birth,
+                    'gender' => $data->gender,
+                    'address' => $data->address,
+                    'phone_number' => $data->phone_number,
+                ]);
+            }
+
+            if (!$student) throw new Exception('Failed update data', 400);
+
+            return responseSuccess($student, 'Success update data');
+        } catch (Exception $e) {
+            return responseError($e->getMessage(), 'Bad Request');
         }
     }
 }
