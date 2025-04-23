@@ -26,6 +26,11 @@ class StudentController extends Controller
         return $this->studentApiService->show($request);
     }
 
+    public function store(Request $request)
+    {
+        return $this->studentApiService->store($request);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->studentApiService->update($request, $id);
