@@ -16,12 +16,11 @@ class StudentService
     public function store($data)
     {
         try {
+            $userPhoto = NULL;
             if ($data->hasFile('photo')) {
                 $image = $data->file('photo');
                 $image->storeAs('student', $image->hashName());
                 $userPhoto = $image->hashName();
-            } else {
-                $userPhoto = 'images/default.jpg';
             }
 
             $checkEmailExist = Student::where('email', $data['email'])->exists();
