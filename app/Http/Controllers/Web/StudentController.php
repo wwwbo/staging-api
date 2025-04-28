@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Student\StoreStudentRequest;
+use App\Services\Shared\SharedService;
 use App\Services\Student\StudentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -39,6 +40,7 @@ class StudentController extends Controller
     public function show(string $id): View
     {
         $student = $this->studentService->show($id);
+        $student = SharedService::showDefaultImage($student);
 
         return view('dashboard.view', compact('student'));
     }
