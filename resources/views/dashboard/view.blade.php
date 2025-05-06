@@ -17,7 +17,6 @@
         <div class="card mb-3">
             <div class="card-body d-flex flex-row gap-4">
                 <div class="img-content">
-                    <!-- {{ asset($student->photo_url) }} -->
                     <img src="{{ asset($student->photo_url) }}"
                         style="width: 15rem; height: 15rem; border-radius: 50% !important; box-shadow: 0px 0px 0px 3px #046aff; object-fit: cover;">
                 </div>
